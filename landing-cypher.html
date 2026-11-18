@@ -1,30 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Esquina CTG</title>
+
 <style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: #050505; }
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #050505;
+  }
+
   body {
-    width: 1080px;      /* ancho fijo de la página = ancho del video */
-    max-width: 100%;    /* en pantallas más angostas se ajusta para no cortarse */
+    width: 1080px;
+    max-width: 100%;
     margin: 0 auto;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
+
   .video-zona {
     width: 100%;
     line-height: 0;
     user-select: none;
     -webkit-user-select: none;
   }
+
   .video-zona video {
     display: block;
-    width: 100%;        /* el video ocupa todo el ancho de la página */
-    height: auto;       /* el alto lo define la proporción del video */
-    pointer-events: none; /* nada sobre el video: ni clic, ni menú, ni pausa */
+    width: 100%;
+    height: auto;
+    pointer-events: none;
   }
+
   footer {
     display: flex;
     flex-wrap: wrap;
@@ -35,6 +48,7 @@
     background: #0d0d0d;
     border-top: 1px solid #1e1e1e;
   }
+
   .boton {
     display: inline-flex;
     align-items: center;
@@ -47,46 +61,88 @@
     color: #fff;
     transition: transform .15s ease, filter .15s ease;
   }
-  .boton:hover { transform: translateY(-1px); filter: brightness(1.12); }
-  .boton svg { width: 18px; height: 18px; flex: none; }
-  .boton-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-  .boton-correo { background: #161616; border: 1px solid #333; }
+
+  .boton:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.12);
+  }
+
+  .boton svg {
+    width: 18px;
+    height: 18px;
+    flex: none;
+  }
+
+  .boton-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  }
+
+  .boton-correo {
+    background: #161616;
+    border: 1px solid #333;
+  }
+
   @media (max-width: 560px) {
-    .boton { font-size: 13px; padding: 9px 16px; gap: 7px; }
+    .boton {
+      font-size: 13px;
+      padding: 9px 16px;
+      gap: 7px;
+    }
   }
 </style>
 </head>
+
 <body>
 
   <div class="video-zona">
-    <!-- Deja este archivo en la MISMA carpeta que el video "CYPHER ANIM".
-         Si tu video tiene otra extensión, cámbiala aquí (por ej. .mov o .webm). -->
-    <video id="cypher" autoplay loop playsinline preload="auto" tabindex="-1"
-           disablepictureinpicture draggable="false"
-           controlslist="nodownload noplaybackrate noremoteplayback nofullscreen">
-      <source src="CYPHER ANIM.mp4" type="CYPHER ANIM.mp4">
+    <video
+      id="cypher"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      tabindex="-1"
+      disablepictureinpicture
+      draggable="false"
+      controlslist="nodownload noplaybackrate noremoteplayback nofullscreen"
+    >
+      <source src="CYPHER%20ANIM.mp4" type="video/mp4">
+      Tu navegador no admite la reproducción de video.
     </video>
   </div>
 
   <footer>
+
     <a class="boton boton-instagram"
-       href="https://www.instagram.com/laesquina.ctg/" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+       href="https://www.instagram.com/laesquina.ctg/"
+       target="_blank"
+       rel="noopener noreferrer">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round"
+           stroke-linejoin="round" aria-hidden="true">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
       </svg>
+
       @laesquina.ctg
     </a>
-    <a class="boton boton-correo" href="mailto:laesquinactg.oficial@gmail.com">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+    <a class="boton boton-correo"
+       href="mailto:laesquinactg.oficial@gmail.com">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round"
+           stroke-linejoin="round" aria-hidden="true">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
         <polyline points="22,6 12,13 2,6"></polyline>
       </svg>
+
       laesquinactg.oficial@gmail.com
     </a>
+
   </footer>
 
   <script>
@@ -94,45 +150,22 @@
       var video = document.getElementById('cypher');
 
       function reproducir() {
-        if (!video.paused) return;
-        var intento = video.play();
-        if (intento !== undefined) {
-          intento.catch(function (error) {
-            // Si el navegador bloquea el autoplay con sonido: silenciar y arrancar igual
-            if (error && error.name === 'NotAllowedError' && !video.muted) {
-              video.muted = true;
-              video.play().catch(function () {});
-            }
-          });
+        if (video.paused) {
+          video.play().catch(function () {});
         }
       }
 
-      // Vuelve a reproducir SIEMPRE que algo logre pausarlo (nunca se detiene)
       video.addEventListener('pause', reproducir);
       video.addEventListener('loadeddata', reproducir);
       video.addEventListener('canplay', reproducir);
-      video.addEventListener('ended', function () { video.currentTime = 0; reproducir(); });
 
-      // Sin menú contextual sobre el video (evita "pausar" / "mostrar controles")
-      video.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-
-      // Primer toque o tecla del usuario: intentar activar el sonido
-      function activarSonido() {
-        if (!video.muted) return;
-        video.muted = false;
-        var intento = video.play();
-        if (intento !== undefined) {
-          intento.catch(function () {
-            video.muted = true;
-            video.play().catch(function () {});
-          });
-        }
-      }
-      window.addEventListener('pointerdown', activarSonido, { once: true });
-      window.addEventListener('keydown', activarSonido, { once: true });
+      video.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
 
       reproducir();
     })();
   </script>
+
 </body>
 </html>
